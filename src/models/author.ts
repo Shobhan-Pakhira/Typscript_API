@@ -1,4 +1,4 @@
-import mongoose, { Document, Schema } from 'mongoose';
+import mongoose, { Document, model, Schema } from 'mongoose';
 
 export interface IAuthor {
     name: string;
@@ -15,4 +15,4 @@ const AuthorSchema: Schema = new Schema(
     }
 );
 
-export default mongoose.model<IAuthorModel>('Author', AuthorSchema);
+export const Author = model<IAuthorModel>('Author', AuthorSchema);
