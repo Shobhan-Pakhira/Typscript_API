@@ -30,6 +30,7 @@ const StartServer = () => {
 
         next();
     });
+
     router.use(express.urlencoded({ extended: true }));
     router.use(express.json);
 
