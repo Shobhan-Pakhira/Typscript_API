@@ -31,7 +31,7 @@ const StartServer = () => {
         next();
     });
     router.use(express.urlencoded({ extended: true }));
-    router.use(express.json);
+    router.use(express.json());
 
     //Rules of API
     router.use((req, res, next) => {
@@ -52,7 +52,9 @@ const StartServer = () => {
     //Routes
 
     //HealthCheck - To Make sure that API is running properly
-    router.get('/ping', (req, res, next) => res.status(200).json({ message: 'Pong' }));
+    router.get('/ping', (req, res, next) => {
+        res.status(200).json({ message: 'Pong' });
+    });
 
     //Error Handling
     router.use((req, res, next) => {
@@ -62,5 +64,5 @@ const StartServer = () => {
         return res.status(404).json({ message: error.message });
     });
 
-    http.createServer(router).listen(config.server.port, () => Logging.info(`Server is running on port ${config.server.port}`));
+    http.createServer(router).listen(8080, () => Logging.info(`Server is running on port 8080`));
 };
